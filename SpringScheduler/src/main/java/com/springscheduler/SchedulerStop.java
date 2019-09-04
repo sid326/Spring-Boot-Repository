@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.ScheduledAnnotationBeanPostProcessor;
 import org.springframework.stereotype.Component;
 /**
@@ -28,7 +27,7 @@ public class SchedulerStop
 	 *
 	 */
 	public void stopJobSchedulerWhenSchedulerDestroyed() throws Exception {
-		ScheduledAnnotationBeanPostProcessor bean = (ScheduledAnnotationBeanPostProcessor) context.getBean("scheduleFixedDelayTask");
+		ScheduledAnnotationBeanPostProcessor bean = (ScheduledAnnotationBeanPostProcessor) context.getBean(ScheduledAnnotationBeanPostProcessor.class);
 		bean.destroy();
 		logger.info("Bean Destroyed, Now None of the scheduler will be running");
 	}
