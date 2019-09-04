@@ -38,7 +38,6 @@ public class SpringBootScheduler
 	@Scheduled(cron = "0 * * * * *")
 	public void scheduleCronJobEveryMin() throws Exception
 	{
-		counter.incrementAndGet();
 		LocalDateTime dateTime = LocalDateTime.now();
 		Thread.currentThread().setName("scheduleCronJobEveryMin");
 		logger.info("scheduleCronJobEveryMin Current DateTime {} Thread Name {}",dateTime, Thread.currentThread().getName());
@@ -52,7 +51,6 @@ public class SpringBootScheduler
 	@Scheduled(fixedDelay = 1000, initialDelay = 1000)
 	public void scheduleFixedDelayTask() 
 	{
-		counter.incrementAndGet();
 		Thread.currentThread().setName("scheduleFixedDelayTask");
 		LocalDateTime dateTime = LocalDateTime.now();
 		logger.info("scheduleFixedDelayTask Current DateTime {} Thread Name {}",dateTime, Thread.currentThread().getName());
@@ -69,7 +67,7 @@ public class SpringBootScheduler
 		Thread.currentThread().setName("scheduleFixedRateTask");
 		LocalDateTime dateTime = LocalDateTime.now();
 		logger.info("scheduleFixedRateTask Current DateTime {} Thread Name {}",dateTime, Thread.currentThread().getName());
-		if(counter.get() >= 100)
+		if(counter.get()== 100)
 		{
 			try 
 			{

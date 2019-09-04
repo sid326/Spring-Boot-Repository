@@ -28,7 +28,7 @@ public class SchedulerStop
 	 *
 	 */
 	public void stopJobSchedulerWhenSchedulerDestroyed() throws Exception {
-		ScheduledAnnotationBeanPostProcessor bean = context.getBean(ScheduledAnnotationBeanPostProcessor.class);
+		ScheduledAnnotationBeanPostProcessor bean = (ScheduledAnnotationBeanPostProcessor) context.getBean("scheduleFixedDelayTask");
 		bean.destroy();
 		logger.info("Bean Destroyed, Now None of the scheduler will be running");
 	}
